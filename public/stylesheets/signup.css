@@ -1,0 +1,162 @@
+*,
+html,
+body {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+body {
+  min-height: 100vh;
+  width: 100vw;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  color: #fff;
+  background-image: url("study-group.jpeg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+#pop-up-message-wrapper {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 4rem;
+  width: 25vw;
+  background-color: rgb(8, 207, 88);
+  color: #fff;
+  font-weight: 700;
+  font-size: 1rem;
+  box-shadow: 15px 15px 15px #042551ae;
+  animation: animateMe 1s forwards;
+  position: absolute;
+  top: 5%;
+  right: 0;
+  z-index: 10000;
+}
+form {
+  background-color: #fff;
+  box-shadow: 15px 15px 15px #042551ae;
+  height: 80%;
+  width: 35%;
+  padding: 1rem 2rem;
+  top: 50%;
+  left: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  border-radius: 20px;
+}
+
+.existing-note-wrapper {
+  width: 100%;
+  height: 4rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.existing-note {
+  font-weight: 900;
+  text-align: center;
+  color: #1f51ff;
+  z-index: 1000;
+}
+
+.existing-note-img {
+  position: absolute;
+  top: 65%;
+}
+
+label {
+  display: block;
+  margin-bottom: 2px;
+  color: #373737;
+  font-weight: 900;
+  margin-bottom: 0;
+}
+
+input {
+  width: 100%;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: -5px;
+}
+input::placeholder {
+  opacity: 0.5;
+}
+
+select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+.btn-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+button {
+  background-color: #1f51ff;
+  color: white;
+  height: 2.5rem;
+  width: 95%;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  font-size: 1rem;
+  margin-top: 1rem;
+  transition: 0.8s;
+}
+
+button:hover {
+  box-shadow: 15px 15px 15px #04255160;
+  background: linear-gradient(to bottom, rgb(40, 4, 81), rgba(4, 38, 81));
+  transition: 0.8s;
+  transform: scale(1.1);
+  background-color: #113ddd;
+}
+
+.zod-error,
+.database-error,
+.email-exist-error {
+  color: #fff;
+  font-weight: 700;
+  padding: 0.5rem 3rem;
+  box-shadow: 15px 15px 15px #042551ae;
+  background-color: rgb(255, 0, 115);
+  animation: animateMe 0.7s forwards;
+
+  border-radius: 50px;
+}
+
+.account-successfull-message {
+  color: #fff;
+  font-weight: 700;
+  padding: 0.5rem 3rem;
+  box-shadow: 15px 15px 15px #042551ae;
+  background-color: rgb(8, 207, 88);
+  animation: animateMe 0.7s forwards;
+  border-radius: 50px;
+}
+
+@keyframes animateMe {
+  0% {
+    transform: scale(0.7);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+.login-link {
+  color: rgb(255, 247, 0);
+  text-decoration: none;
+}

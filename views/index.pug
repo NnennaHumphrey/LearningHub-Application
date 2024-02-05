@@ -1,0 +1,215 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="utf-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+
+    title LearnHub | Homepage
+    link(href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,600,600i,700,700i", rel="stylesheet")
+    link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" )
+    link(href="/stylesheets/assets/vendor/aos/aos.css", rel="stylesheet")
+    link(href="/stylesheets/assets/vendor/bootstrap/css/bootstrap.min.css", rel="stylesheet")
+    link(href="/stylesheets/assets/vendor/bootstrap-icons/bootstrap-icons.css", rel="stylesheet")
+    link(href="/stylesheets/assets/vendor/boxicons/css/boxicons.min.css", rel="stylesheet")
+    link(href="/stylesheets/assets/vendor/glightbox/css/glightbox.min.css", rel="stylesheet")
+    link(href="/stylesheets/assets/vendor/swiper/swiper-bundle.min.css", rel="stylesheet")
+
+    
+    link(href="/stylesheets/assets/css/style.css", rel="stylesheet")
+
+  body
+    
+    header#header.fixed-top.d-flex.align-items-center
+      if userDetailFromDatabase
+        .container.d-flex.align-items-center.justify-content-between
+          .logo
+            h1.text-light
+              a(href="index.html")
+                span
+                  strong Learnhub
+
+          
+          nav#navbar.navbar
+            ul
+              li
+                button.nav-link.scrollto.active Home
+              li
+                button.getstarted.scrollto My Courses
+              li.profile-icon-wrapper
+                .icon-wrapper-inner 
+                  button.profile-icon #{userDetailFromDatabase.full_name[0]}
+                  i.fa-solid.fa-chevron-down.arrow-down
+                .user-detail-display-wrapper
+                  a(href="" class="profile-link") Profile
+                  a(href="" class="help-center-link") Help Center
+                  a(href="" class="logout-link") Logout
+
+
+
+              
+            i.bi.bi-list.mobile-nav-toggle
+      else 
+        .container.d-flex.align-items-center.justify-content-between
+          .logo
+            h1.text-light
+              a(href="index.html")
+                span
+                  strong Learnhub
+
+          
+          nav#navbar.navbar
+            ul
+              li
+                a.nav-link.scrollto.active(href="index.html") Home
+              li
+                a.nav-link.scrollto(href="#about") About Us
+              li
+                a.nav-link.scrollto(href="courses.html") Courses
+              li
+                a.nav-link.scrollto(href="#contact") Contact
+              li
+                a.getstarted.scrollto(href="#about") Get Started
+            i.bi.bi-list.mobile-nav-toggle
+
+    
+    section#hero.d-flex.align-items-center
+      .container
+        .row.gy-4
+          
+          .col-lg-6.order-2.order-lg-1.d-flex.flex-column.justify-content-center
+            h1 Get the best learning experience with
+              span(style="color: #1f51ff;") Learnhub
+            h2
+              | Get access to top industry leaders in the comfort of your home from all around the globe!
+            div
+              a.btn-get-started.scrollto(href="#about") Get Started
+
+          .col-lg-6.order-1.order-lg-2.hero-img
+            img(src="/stylesheets/assets/img/hero-img.jpg", class="img-fluid animated", alt="")
+
+    
+    main#main
+      section#courses.portfolio
+        .container(data-aos="fade-up")
+          .section-title
+            h2 Courses
+            p Check out some of our Courses here
+
+          .row.portfolio-container(data-aos="fade-up", data-aos-delay="200")
+            if course_details 
+              ul.courses_list_wrapper 
+                each course in course_details || []
+                  li.each_course_wrapper 
+                    .col-lg-4.col-md-6.portfolio-item.filter-app
+                      .portfolio-wrap
+                        img(src=`/uploads/${course.course_thumbnail_name}`, class="img-fluid", alt="")
+                        .portfolio-links
+                          a.portfolio-lightbox(href="assets/img/portfolio/react-logo.svg", data-gallery="portfolioGallery", title="Enroll")
+                            i.bi.bi-plus
+                          a(href="portfolio-details.html", title="More Details")
+                            i.bi.bi-link
+                      .course-details
+                        h4.course-title #{course.course_title}
+                        h6.course-description #{course.course_description}
+                        h6.course-category #{course.category}
+                        h6.course-language #{course.language}
+                        h6.price #{course.price}
+                        
+
+      
+      footer#footer
+        
+        .footer-newsletter
+          .container
+            .row.justify-content-center
+              .col-lg-6
+                h4 Join Our Newsletter
+                p Be the first to know about new updates and exciting offers
+                form(action="", method="post")
+                  input(type="email", name="email")
+                  input(type="submit", value="Subscribe")
+
+        
+        .footer-top
+          .container
+            .row
+              
+              .col-lg-3.col-md-6.footer-contact
+                h3 Learnhub
+                p
+                  | A108 Adam Street
+                  br
+                  | Lagos Island, Lagos
+                  br
+                  | Nigeria
+                  br
+                  br
+                  strong Phone:
+                  | +234 8054 554 4545
+                  br
+                  strong Email:
+                  | info@example.com
+
+              
+              .col-lg-3.col-md-6.footer-links
+                h4 Useful Links
+                ul
+                  li
+                    i.bx.bx-chevron-right
+                    a(href="#") Home
+                  li
+                    i.bx.bx-chevron-right
+                    a(href="#") About us
+                  li
+                    i.bx.bx-chevron-right
+                    a(href="#") Courses
+
+              
+              .col-lg-3.col-md-6.footer-links
+                h4 Legal
+                ul
+                  li
+                    i.bx.bx-chevron-right
+                    a(href="#") Terms of service
+                  li
+                    i.bx.bx-chevron-right
+                    a(href="#") Privacy policy
+
+              
+              .col-lg-3.col-md-6.footer-links
+                h4 Our Social Networks
+                .social-links.mt-3
+                  a(href="#", class="twitter")
+                    | <i class="bx bxl-twitter"></i>
+                  a(href="#", class="facebook")
+                    | <i class="bx bxl-facebook"></i>
+                  a(href="#", class="instagram")
+                    | <i class="bx bxl-instagram"></i>
+                  a(href="#", class="google-plus")
+                    | <i class="bx bxl-skype"></i>
+                  a(href="#", class="linkedin")
+                    | <i class="bx bxl-linkedin"></i>
+
+        
+        .container.py-4
+          .copyright
+            | &copy; Copyright
+            strong
+              span Ninestars
+            | . All Rights Reserved
+          .credits
+            | Designed by
+            a(href="https://bootstrapmade.com/") BootstrapMade
+
+    
+    a(href="#" class="back-to-top d-flex.align-items-center.justify-content-center")
+      i.bi.bi-arrow-up-short
+
+    
+    script(src="../js/index.js")
+    script(src="../js/js/main.js")
+    script(src="../js/vendor/aos/aos.js")
+    script(src="../js/vendor/bootstrap/js/bootstrap.bundle.min.js")
+    script(src="../js/vendor/glightbox/js/glightbox.min.js")
+    
+   

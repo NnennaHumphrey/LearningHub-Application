@@ -1,0 +1,27 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    title LearnHub | Login
+    link(rel='stylesheet', href='../stylesheets/login.css')
+  body
+    
+    #pop-up-message-wrapper
+      p#display-pop-up-message
+
+    form(method='post' id="login_new_user" enctype="application/x-www-form-urlencoded")
+      .existing-note-wrapper 
+        h1.existing-note Learnhub
+        img(src="../img/curve.png", alt="", class="existing-note-img", srcset="")
+
+      label(for='email') Email:
+      input(type='email', id='email', name='email', placeholder="enter your email here", required)
+
+      label(for='password') Password:
+      input(type='password', id='password', name='password', placeholder="enter your password here", required)
+      
+      .btn-wrapper
+        button(type='submit') Login
+    
+    script(src="../js/login.js") 

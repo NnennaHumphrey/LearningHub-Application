@@ -1,0 +1,45 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        link(rel='stylesheet', href='../stylesheets/learner_dashboard.css')
+        link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" )
+        title LearnHub | Dashboard
+    body
+        header#header 
+            .left-icon 
+                a.logo-link-wrapper(href="/") 
+                    |
+                    img(src="../img/note-icon.png", alt="", srcset="")
+            .search-icon-wrapper
+                //- i.fa-solid.fa-magnifying-glass.search-icon
+                input.search-input(type='text', placeholder='Search Note', class="search-input")
+            .right-btn-wrapper
+                p.user-icon-from-first-name A
+        section
+            #pop-up-message-wrapper
+                p#display-pop-up-message
+            
+            ul
+                each course in allCoursesFromDatabase || []
+                    li
+                        h2 #{course.course_title}
+                        p 
+                        strong VideoUrl: 
+                            | #{course.course_video_url}          
+                        p 
+                        strong Course Description: 
+                            | #{course.course_description}
+                        p 
+                        strong Price: 
+                            | #{course.price}
+                        p 
+                        strong Course Category: 
+                            | #{course.course_category}
+                        p 
+                        strong Course Language: 
+                            | #{course.course_language}
+                
+    script(src="../js/learner_dashboard.js")
+        

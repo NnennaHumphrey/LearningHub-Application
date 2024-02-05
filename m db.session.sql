@@ -1,0 +1,1 @@
+ALTER TABLE course_details ADD COLUMN course_thumbnail_name VARCHAR(100)

@@ -1,0 +1,54 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    link(rel='stylesheet', href='../stylesheets/signup.css')
+    link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" )
+    title LearnHub | Signup
+  body
+    
+    #pop-up-message-wrapper
+      p#display-pop-up-message
+        
+    form(method='post', enctype="application/x-www-form-urlencoded" id="signup_new_user")
+      .existing-note-wrapper 
+        h1.existing-note Signup
+        img(src="../img/curve.png", alt="", class="existing-note-img", srcset="")
+      label(for='full_name')
+        | Full Name:
+      br
+      input(type='text', id='full_name', name='full_name', placeholder="enter your fullname here", required)
+      
+      br
+      label(for="gender") Gender:
+          select(id="gender", name="gender", required)
+            option(value="male") Male
+            option(value="female") Female
+        
+      br
+
+      label(for='email')
+        | Email:
+      br
+      input(type='email', id='email', name='email', placeholder="enter your email here", required)
+      
+      br
+      label(for='phone_no')
+        | Phone:
+      br
+      input(type='text', id='phone_no', name='phone_no', required, value='+234', placeholder="enter your phone number without the first 0 digit e.g 8100000000", class='prefilled-phone')
+      
+      br
+      label(for='password')
+        | Password:
+      br
+      input(type='password', id='password', name='password', placeholder="password must be at least 6 character", required)
+
+      .btn-wrapper
+        button(type='submit') Signup
+    
+    script(src="../js/signup.js") 
+
+
+    

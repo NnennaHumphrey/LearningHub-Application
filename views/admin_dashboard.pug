@@ -1,0 +1,127 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        link(rel='stylesheet', href='../stylesheets/admin_dashboard.css')
+        link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" )
+        title LearnHub | Admin Dashboard
+    body
+        header#header 
+            .left-icon 
+                a.logo-link-wrapper(href="/") 
+                    |
+                    img(src="../img/note-icon.png", alt="", srcset="")
+            .search-icon-wrapper
+                //- i.fa-solid.fa-magnifying-glass.search-icon
+                input.search-input(type='text', placeholder='Search Note', class="search-input")
+            .right-btn-wrapper
+                p.user-icon-from-first-name A
+        section
+            #pop-up-message-wrapper
+                p#display-pop-up-message
+            
+            a(id="add-new-course-btn", href="dashboard/add-new-course") Click to add new course
+            //- <i class="fa-solid fa-plus plus-icon">
+            h2.course-section Courses Section
+            if course_details && course_details.length == 0
+                p.no-course-length You course list is empty, kindly click on the button below to create one.
+                
+            else if course_details && course_details.length >= 1 
+            ul
+                each course in course_details || []
+                    li
+                        h2 #{course.course_title}
+                        p 
+                        strong VideoUrl: 
+                            | #{course.course_video_url}          
+                        p 
+                        strong Course Description: 
+                            | #{course.course_description}
+                        p 
+                        strong Price: 
+                            | #{course.price}
+                        p 
+                        strong Course Category: 
+                            | #{course.course_category}
+                        p 
+                        strong Course Language: 
+                            | #{course.course_language}
+                        p 
+                        strong Course Added by: 
+                            | #{course.full_name}
+                        p 
+                        strong Course ID: 
+                            | #{course.courseId}
+                        p 
+                        strong Date Added: 
+                            | #{course.date_added}
+                        p 
+                        strong Last Updated: 
+                            | #{course.last_updated}
+                        .edit-and-delete-button-wrapper
+                            a(href=`dashboard/edit-course/${course.courseId}`, class="edit-course") Edit Course
+                            button(class="delete-course", id=`delete-course-${course.courseId}`, data-course=JSON.stringify(course), onclick=`togglePopUp("delete-note-pop-up", event)`) Delete Course
+
+        section
+            h2 Users Section
+            ul
+                each user in user_details || []
+                    li
+                        h2 #{user.full_name}
+                        p 
+                        strong gender: 
+                            | #{user.gender}          
+                        p 
+                        strong Email: 
+                            | #{user.email}
+                        p 
+                        strong Phone: 
+                            | #{user.phone_no}
+                        p 
+                        strong User Id: 
+                            | #{user.userId}
+                        button(class="delete-user", id=`delete-user-${user.userId}`, data-user=JSON.stringify(user), onclick=`togglePopUp("delete-note-pop-up", event)`) Delete User
+        
+        div#add-new-course-pop-up(style="display: none;")
+            form(id="add-new-course-form", action='/admin/dashboard/add-new-course', method='post', enctype="application/x-www-form-urlencoded")
+                label(for='course_title') Course Title:
+                input(type='text', id='course_title', name='course_title', required, placeholder='Enter the course title here')
+
+                label(for='course_video_url') Course Video URL:
+                input(type='text', id='course_video_url', name='course_video_url', placeholder='Enter the link to the course video here')
+
+                label(for='course_description') Course Description:
+                input(type='text', id='course_description', name='course_description', placeholder='Enter the course description here')
+                
+                label(for='price') Price:
+                input(type='number', id='price', step='0.01', name='price', placeholder='Enter the course price here')
+                
+                label(for="course_category") Course category:
+                    select(id="course_category", name="course_category", required)
+                        option(value="", disabled, selected, class="selected") Please select the category below
+                        option(value="Website Development") Web Development
+                        option(value="Graphic Science") Graphic Design
+                        option(value="Data Science") Data Science
+                        option(value="Busines") Business
+                        option(value="Computer Science") Computer Science
+                        option(value="Language") Language
+                        option(value="Physical Sciences") Physical Sciences
+                        option(value="Social Sciences") Social Sciences
+                
+                label(for='course_language') Course Language:
+                input(type='text', id='course_language', name='course_language', placeholder='Enter the course language here')
+
+                div.button-wrapper    
+                    button.create-course-btn(type='submit') Create Course
+                    button(class="cancel-btn", onclick=`togglePopUp("add-new-course-pop-up", event)`) Cancel
+        
+        div#delete-note-pop-up(style="display: none;")
+            .delete-btn-wrapper 
+                p.are-you-sure Are you sure you want to delete 
+                .confirm-cancel-btn-wrapper
+                button.confirm-btn Yes  
+                button(class="cancel-btn no", onclick=`togglePopUp("delete-note-pop-up", event)`) Cancel
+    
+    script(src="../js/admin_dashboard.js")
+        

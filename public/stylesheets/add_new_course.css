@@ -1,0 +1,281 @@
+*,
+html,
+body {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font: 1rem "Lucida Grande", Helvetica, Arial, sans-serif;
+  font-weight: 500;
+  min-height: 100vh;
+  color: #042651;
+}
+
+header {
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  height: 6rem;
+  align-items: center;
+  margin-bottom: 2rem;
+  box-shadow: 0px 8px 25px #000c1bce;
+  background-color: rgba(4, 38, 81);
+}
+
+.sticky-header {
+  position: fixed;
+  top: 0;
+  transition: all 1s ease;
+  z-index: 3000;
+  width: 100%;
+  animation: slideDown 0.8s ease-in-out forwards;
+}
+
+@keyframes slideDown {
+  0% {
+    margin-top: -1000px;
+  }
+  100% {
+    margin-top: 0;
+  }
+}
+.left-icon {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  width: 25%;
+  margin-left: 2rem;
+}
+.left-icon img {
+  height: 3.5rem;
+  width: 3rem;
+  object-fit: contain;
+}
+
+.left-icon-text {
+  color: #ffc600;
+  font-size: 1.5rem;
+  margin-left: 0.8rem;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.search-icon-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: 50%;
+}
+
+.search-input {
+  border: none;
+  background-color: #1858ad42;
+  width: 90%;
+  margin: auto 0;
+  align-self: center;
+  border-radius: 10px;
+  padding: 1rem;
+}
+.search-input::placeholder,
+.search-icon {
+  color: #ffffff6c;
+}
+
+.right-btn-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  width: 25%;
+  margin-right: 2rem;
+}
+
+.sign-out-text {
+  color: #042651;
+  background-color: #fff;
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem;
+  border-radius: 50px;
+  font-weight: 700;
+  margin-right: 3rem;
+  cursor: pointer;
+  text-decoration: none;
+}
+.sign-out-wrapper {
+  height: 1rem;
+  width: 1rem;
+  /* background-color: #fff; */
+}
+.sign-out-text:hover {
+  background-color: #e6e6e6;
+  transition: 1s;
+}
+
+.sign-out-icon {
+  color: #042651;
+}
+.night-mode,
+.day-mode {
+  color: #fff;
+  font-size: 2rem;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.course-video-preview-wrapper {
+  display: none;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  animation: animateVideoPreview 1s ease-in-out forwards;
+  margin-bottom: 2rem;
+  background-color: inherit;
+}
+
+.video-wrapper {
+  animation: animateVideoPreview 1s ease-in-out forwards;
+}
+@keyframes animateVideoPreview {
+  0% {
+    height: 0;
+    z-index: 10000;
+  }
+  100% {
+    height: 400px;
+    z-index: 10000;
+  }
+}
+form {
+  background-color: #ffff;
+  width: 40%;
+  height: 60%;
+  margin: auto;
+  padding: 1rem;
+  display: flex;
+  border-radius: 20px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow-y: visible;
+  padding: 2rem;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 900;
+  align-self: flex-start;
+}
+
+input {
+  width: 100%;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+input::placeholder {
+  color: #31313167;
+}
+
+select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+.undefined-user-error,
+.zodError,
+.error-message {
+  color: #ff0062;
+}
+.course-video-wrapper {
+  display: flex;
+  width: 100%;
+}
+#course_video_url {
+  width: 80%;
+}
+
+.preview-btn {
+  width: 20%;
+  height: 2rem;
+  background-color: #042651;
+  color: #fff;
+  cursor: pointer;
+}
+
+#pop-up-message-wrapper {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 4rem;
+  width: 25vw;
+  background-color: rgb(8, 207, 88);
+  color: #fff;
+  font-weight: 700;
+  font-size: 1rem;
+  box-shadow: 15px 15px 15px #042551ae;
+  animation: animateMe 1s forwards;
+  position: fixed;
+  top: 3;
+  right: 0;
+  z-index: 10000;
+}
+
+.course-create-success-message,
+#display-pop-up-message {
+  text-wrap: wrap;
+}
+
+@keyframes animateMe {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+.button-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+  margin-top: 1rem;
+}
+
+.create-course-btn,
+.cancel-btn {
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  border: none;
+  margin: 0.5rem;
+  cursor: pointer;
+  color: #fff;
+  text-decoration: none;
+}
+
+.create-course-btn {
+  background-color: #4caf50;
+  transition: 0.5s;
+}
+
+.cancel-btn {
+  background-color: rgb(203, 0, 0);
+  transition: 0.5s;
+  font-size: 0.8rem;
+}
+.cancel-btn:hover {
+  background-color: rgb(165, 1, 1);
+  transition: 0.5s;
+}
